@@ -1,0 +1,29 @@
+/* 中文长文阅读：略放大字号与行距 */
+.post-content {
+  font-size: 1.06rem;
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+}
+
+.post-content p {
+  margin-top: 0.85em;
+  margin-bottom: 0.85em;
+}
+
+.post-content pre {
+  border-radius: 10px;
+}
+
+.post-title {
+  letter-spacing: 0.03em;
+}
+
+/* 首页 profile 区略增呼吸感 */
+.profile .profile_inner > img {
+  border-radius: 50%;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+}
+
+body.dark .profile .profile_inner > img {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+}

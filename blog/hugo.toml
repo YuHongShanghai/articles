@@ -21,6 +21,8 @@ description = "音视频、流媒体、OpenGL 与 ffplay 源码笔记"
 author = "YuHong"
 defaultTheme = "auto"
 ShowReadingTime = true
+ShowWordCount = true
+ShowLastMod = true
 ShowShareButtons = false
 ShowPostNavLinks = true
 ShowBreadCrumbs = true
@@ -30,14 +32,45 @@ ShowAllPagesInArchive = true
 ShowPageNums = true
 ShowToc = true
 comments = false
+displayFullLangName = true
+hideFooter = false
 
-[params.homeInfoParams]
-Title = "技术笔记"
-Content = "系列教程与源码解析，持续更新。"
+# 首页：头像 + 标题 + 快捷入口（比纯文字 homeInfo 更「站」一点）
+[params.profileMode]
+enabled = true
+title = "技术笔记"
+subtitle = "音视频 · 流媒体 · OpenGL · ffplay 源码与实战"
+imageUrl = "https://github.com/YuHongShanghai.png"
+imageTitle = "YuHong"
+imageWidth = 120
+imageHeight = 120
+
+[[params.profileMode.buttons]]
+name = "音视频入门"
+url = "/intro/"
+
+[[params.profileMode.buttons]]
+name = "流媒体 / WebRTC"
+url = "/streaming/"
+
+[[params.profileMode.buttons]]
+name = "OpenGL"
+url = "/opengl/"
+
+[[params.profileMode.buttons]]
+name = "ffplay 源码"
+url = "/ffplay/"
+
+[[params.profileMode.buttons]]
+name = "归档"
+url = "/archives/"
 
 [[params.socialIcons]]
 name = "github"
 url = "https://github.com/YuHongShanghai"
+
+[markup.goldmark.renderer]
+unsafe = true
 
 [[menu.main]]
 identifier = "intro"
