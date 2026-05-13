@@ -45,6 +45,35 @@ jobs:
           echo "Building with baseURL=${HUGO_BASEURL}"
           hugo --minify --gc --baseURL "${HUGO_BASEURL}"
 
+      # PaperMod 用 RelPermalink 生成 /assets/...，在 github.io/<repo>/ 子路径下会指向域名根导致 CSS 404
+      - name: Patch asset URLs for GitHub Pages project site
+        env:
+          REPO_NAME: ${{ github.event.repository.name }}
+        run: |
+          touch blog/public/.nojekyll
+          python3 << 'PY'
+          import os, pathlib
+          prefix = "/" + os.environ["REPO_NAME"]
+          root = pathlib.Path("blog/public")
+          pairs = [
+              ('href="/assets/', f'href="{prefix}/assets/'),
+              ('src="/assets/', f'src="{prefix}/assets/'),
+          ]
+          exts = {".html", ".htm", ".xml", ".json", ".svg"}
+          for path in root.rglob("*"):
+              if not path.is_file() or path.suffix.lower() not in exts:
+                  continue
+              try:
+                  text = path.read_text(encoding="utf-8")
+              except (UnicodeDecodeError, OSError):
+                  continue
+              new = text
+              for a, b in pairs:
+                  new = new.replace(a, b)
+              if new != text:
+                  path.write_text(new, encoding="utf-8")
+          PY
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
