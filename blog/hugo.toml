@@ -39,7 +39,6 @@ Content = "系列教程与源码解析，持续更新。"
 name = "github"
 url = "https://github.com/YuHongShanghai"
 
-[menu.main]
 [[menu.main]]
 identifier = "intro"
 name = "音视频入门"
