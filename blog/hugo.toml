@@ -9,8 +9,11 @@ enableRobotsTXT = true
 buildDrafts = false
 disablePathToLower = true
 
-# GitHub Project Pages：站点在 /articles/ 子路径；PaperMod 菜单多为「根路径」形式，需生成相对 URL
-relativeURLs = true
+# GitHub Project Pages：relativeURLs 在子路径下易把 /archives/ 解析成相对当前文章的错误地址；用 canonifyURLs + 正确 baseURL
+relativeURLs = false
+canonifyURLs = true
+# 避免 section 名 ffplay 被英文规则变成「Ffplays」
+pluralizeListTitles = false
 
 [pagination]
 pagerSize = 10
@@ -37,6 +40,8 @@ ShowToc = true
 comments = false
 displayFullLangName = true
 hideFooter = false
+# PaperMod 首页与归档按 mainSections 过滤文章；对应四个系列的 content type
+mainSections = ["intro", "streaming", "opengl", "ffplay"]
 
 # 首页：头像 + 标题 + 快捷入口（比纯文字 homeInfo 更「站」一点）
 [params.profileMode]
