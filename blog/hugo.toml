@@ -9,9 +9,9 @@ enableRobotsTXT = true
 buildDrafts = false
 disablePathToLower = true
 
-# GitHub Project Pages：relativeURLs 在子路径下易把 /archives/ 解析成相对当前文章的错误地址；用 canonifyURLs + 正确 baseURL
-relativeURLs = false
-canonifyURLs = true
+# 子路径部署：canonifyURLs 易把 CSS 等打成 https://域名/assets/...（缺 /articles/）→ 404；用 relativeURLs + 无前导 / 的站内路径
+relativeURLs = true
+canonifyURLs = false
 # 避免 section 名 ffplay 被英文规则变成「Ffplays」
 pluralizeListTitles = false
 
@@ -55,23 +55,23 @@ imageHeight = 120
 
 [[params.profileMode.buttons]]
 name = "音视频入门"
-url = "/intro/"
+url = "intro/"
 
 [[params.profileMode.buttons]]
 name = "流媒体 / WebRTC"
-url = "/streaming/"
+url = "streaming/"
 
 [[params.profileMode.buttons]]
 name = "OpenGL"
-url = "/opengl/"
+url = "opengl/"
 
 [[params.profileMode.buttons]]
 name = "ffplay 源码"
-url = "/ffplay/"
+url = "ffplay/"
 
 [[params.profileMode.buttons]]
 name = "归档"
-url = "/archives/"
+url = "archives/"
 
 [[params.socialIcons]]
 name = "github"
@@ -83,31 +83,31 @@ unsafe = true
 [[menu.main]]
 identifier = "intro"
 name = "音视频入门"
-url = "/intro/"
+url = "intro/"
 weight = 10
 
 [[menu.main]]
 identifier = "streaming"
 name = "流媒体 / WebRTC"
-url = "/streaming/"
+url = "streaming/"
 weight = 20
 
 [[menu.main]]
 identifier = "opengl"
 name = "OpenGL 教程"
-url = "/opengl/"
+url = "opengl/"
 weight = 30
 
 [[menu.main]]
 identifier = "ffplay"
 name = "ffplay 源码"
-url = "/ffplay/"
+url = "ffplay/"
 weight = 40
 
 [[menu.main]]
 identifier = "archive"
 name = "归档"
-url = "/archives/"
+url = "archives/"
 weight = 90
 
 # 将仓库内已有 Markdown 挂到 content 下，无需复制正文
