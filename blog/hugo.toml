@@ -1,0 +1,88 @@
+# 若 GitHub 仓库名不是 articles，请同步修改 baseURL 与 .github/workflows/hugo-pages.yml 中的 HUGO_BASEURL
+baseURL = "https://yuhongshanghai.github.io/articles/"
+languageCode = "zh-cn"
+title = "技术笔记"
+theme = "PaperMod"
+
+enableGitInfo = true
+enableRobotsTXT = true
+buildDrafts = false
+disablePathToLower = true
+
+[pagination]
+pagerSize = 10
+
+[minify]
+disableXML = true
+
+[params]
+env = "production"
+description = "音视频、流媒体、OpenGL 与 ffplay 源码笔记"
+author = "YuHong"
+defaultTheme = "auto"
+ShowReadingTime = true
+ShowShareButtons = false
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowRssButtonInSectionTermList = true
+ShowAllPagesInArchive = true
+ShowPageNums = true
+ShowToc = true
+comments = false
+
+[params.homeInfoParams]
+Title = "技术笔记"
+Content = "系列教程与源码解析，持续更新。"
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/YuHongShanghai"
+
+[menu.main]
+[[menu.main]]
+identifier = "intro"
+name = "音视频入门"
+url = "/intro/"
+weight = 10
+
+[[menu.main]]
+identifier = "streaming"
+name = "流媒体 / WebRTC"
+url = "/streaming/"
+weight = 20
+
+[[menu.main]]
+identifier = "opengl"
+name = "OpenGL 教程"
+url = "/opengl/"
+weight = 30
+
+[[menu.main]]
+identifier = "ffplay"
+name = "ffplay 源码"
+url = "/ffplay/"
+weight = 40
+
+[[menu.main]]
+identifier = "archive"
+name = "归档"
+url = "/archives/"
+weight = 90
+
+# 将仓库内已有 Markdown 挂到 content 下，无需复制正文
+[[module.mounts]]
+source = "../音视频入门教程/publish"
+target = "content/intro"
+
+[[module.mounts]]
+source = "../articles-streaming/publish"
+target = "content/streaming"
+
+[[module.mounts]]
+source = "../opengl教程/publish"
+target = "content/opengl"
+
+[[module.mounts]]
+source = "../ffplay源码解析"
+target = "content/ffplay"

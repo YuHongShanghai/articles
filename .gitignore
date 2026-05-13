@@ -1,0 +1,16 @@
+.DS_Store
+Thumbs.db
+
+**/__pycache__/
+*.py[cod]
+
+# Hugo 构建产物与主题（CI 会拉取）
+blog/public/
+blog/resources/_gen/
+blog/themes/PaperMod/
+
+# 本地构建目录（体积大、可重现）
+**/cmake-build-debug/
+**/cmake-build-*/
+**/build/
+**/.idea/
