@@ -27,3 +27,13 @@
 body.dark .profile .profile_inner > img {
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
 }
+
+/* 系列列表仅标题：标题用显式链接，避免整卡透明 entry-link 叠层导致标题不可见 */
+.post-entry .entry-title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-entry .entry-title-link:hover {
+  text-decoration: underline;
+}

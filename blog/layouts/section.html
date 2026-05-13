@@ -67,9 +67,10 @@
 
 <article class="{{ $class }}">
   {{- if $titlesOnly }}
+  {{- $entryTitle := .Title | default .LinkTitle | default .File.ContentBaseName }}
   <header class="entry-header">
     <h2 class="entry-hint-parent">
-      {{- .Title }}
+      <a class="entry-title-link" href="{{ .Permalink }}">{{ $entryTitle }}</a>
       {{- if .Draft }}
       <span class="entry-hint" title="Draft">
         <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
@@ -80,7 +81,6 @@
       {{- end }}
     </h2>
   </header>
-  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
   {{- else }}
   {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
   {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
