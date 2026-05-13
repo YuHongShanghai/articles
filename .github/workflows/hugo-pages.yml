@@ -55,11 +55,22 @@ jobs:
           import os, pathlib
           prefix = "/" + os.environ["REPO_NAME"]
           root = pathlib.Path("blog/public")
-          pairs = [
-              ('href="/assets/', f'href="{prefix}/assets/'),
-              ('src="/assets/', f'src="{prefix}/assets/'),
-          ]
           exts = {".html", ".htm", ".xml", ".json", ".svg"}
+
+          def patch(text: str) -> str:
+              # 修正历史误伤：/articles/articles/assets/ → /articles/assets/
+              double = f"{prefix}{prefix}/assets/"
+              single = f"{prefix}/assets/"
+              while double in text:
+                  text = text.replace(double, single)
+              # Hugo 在 relativeURLs 下可能生成无前导斜杠的 articles/assets/…
+              text = text.replace('href="articles/assets/', f'href="{prefix}/assets/')
+              text = text.replace('src="articles/assets/', f'src="{prefix}/assets/')
+              # 仍指向站点根下的 /assets/ 时补上仓库前缀
+              text = text.replace('href="/assets/', f'href="{prefix}/assets/')
+              text = text.replace('src="/assets/', f'src="{prefix}/assets/')
+              return text
+
           for path in root.rglob("*"):
               if not path.is_file() or path.suffix.lower() not in exts:
                   continue
@@ -67,9 +78,7 @@ jobs:
                   text = path.read_text(encoding="utf-8")
               except (UnicodeDecodeError, OSError):
                   continue
-              new = text
-              for a, b in pairs:
-                  new = new.replace(a, b)
+              new = patch(text)
               if new != text:
                   path.write_text(new, encoding="utf-8")
           PY

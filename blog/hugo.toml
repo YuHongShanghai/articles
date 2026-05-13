@@ -9,8 +9,8 @@ enableRobotsTXT = true
 buildDrafts = false
 disablePathToLower = true
 
-# 子路径部署：canonifyURLs 易把 CSS 等打成 https://域名/assets/...（缺 /articles/）→ 404；用 relativeURLs + 无前导 / 的站内路径
-relativeURLs = true
+# 子路径：勿开 relativeURLs，否则易出现 href="articles/assets/..." → 在 /articles/ 下解析成 /articles/articles/...
+relativeURLs = false
 canonifyURLs = false
 # 避免 section 名 ffplay 被英文规则变成「Ffplays」
 pluralizeListTitles = false
