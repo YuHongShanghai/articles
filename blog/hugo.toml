@@ -9,6 +9,9 @@ enableRobotsTXT = true
 buildDrafts = false
 disablePathToLower = true
 
+# GitHub Project Pages：站点在 /articles/ 子路径；PaperMod 菜单多为「根路径」形式，需生成相对 URL
+relativeURLs = true
+
 [pagination]
 pagerSize = 10
 
